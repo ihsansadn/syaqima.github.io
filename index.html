@@ -91,7 +91,7 @@
               <div class="col-8">
                 <h3>Luthfiah (Yupi) Maulida</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus corporis incidunt delectus at quod sed.</p>
-                <p>Putra pertama dari Bpk. Hilalludin <br> dan <br> Ibu Sri Widawati</p>
+                <p>Putra pertama dari Bpk. Hilalludin (Ibu Wendah) <br> dan <br> Ibu Sri Widawati</p>
               </div>
             </div>
           </div>
@@ -325,7 +325,7 @@
 
     <div id="audio-container">
       <audio id="song" autoplay loop>
-        <source src="audio/penjaga-hati.mp3" type="audio/mp3">
+        <source src="audio/penjaga-hati-full.mp3" type="audio/mp3">
       </audio>
 
       <div class="audio-icon-wrapper" style="display: none;">
@@ -373,6 +373,8 @@
 
     <script>
       const rootElement = document.querySelector(":root");
+      const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
+
       function disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
@@ -389,12 +391,21 @@
       function enableScroll() {
         window.onscroll = function () {  }
         rootElement.style.scrollBehavior = 'smooth';
-        localStorage.setItem('opened', 'true');
+        // localStorage.setItem('opened', 'true');
+        playAudio();
       }
 
-      if (!localStorage.getItem('opened')) {
-        disableScroll();
+      function playAudio() {
+        const song = document.querySelector('#song');
+        song.volume = 0.1;
+        audioIconWrapper.style.display = 'flex';
+        song.play();
       }
+
+      // if (!localStorage.getItem('opened')) {
+      //   disableScroll();
+      // }
+    disableScroll();
       
     </script>
 
