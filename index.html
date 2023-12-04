@@ -23,7 +23,7 @@
     
     <section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
         <main>
-            <h4>Kepada Bapak/Ibu/Saudara/i, </h4>
+            <h4>Kepada Bapak/Ibu/Saudara/i, <span></span></h4>
             <h1>Ihsan & Yupi</h1>
             <p>Akan melangsungkan walimatul 'ursy (resepsi pernikahan) dalam:</p>
             <div class="simply-countdown"></div>
@@ -72,7 +72,7 @@
             <div class="row">
               <div class="col-8 text-end">
                 <h3>Ihsan Syauqi Adn</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus corporis incidunt delectus at quod sed.</p>
+                <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus corporis incidunt delectus at quod sed.</p> -->
                 <p>Putra pertama dari Bpk. Dodi Apandi <br> dan <br> Ibu Fife Kurniawati</p>
               </div>
               <div class="col-4">
@@ -90,7 +90,7 @@
               </div>
               <div class="col-8">
                 <h3>Luthfiah (Yupi) Maulida</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus corporis incidunt delectus at quod sed.</p>
+                <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus corporis incidunt delectus at quod sed.</p> -->
                 <p>Putra pertama dari Bpk. Hilalludin (Ibu Wendah) <br> dan <br> Ibu Sri Widawati</p>
               </div>
             </div>
@@ -129,7 +129,7 @@
                 
               </div>
               <div class="card-footer">
-                Walimatul 'ursy Dilaksanakan Secara Infishol
+                Tanpa Mengurangi Rasa Hormat, Walimatul 'Ursy Dilaksanakan Secara Infishol (Tamu Ikhwan & Akhwat Dipisah)
               </div>
             </div>
             
@@ -159,7 +159,7 @@
                   <span>30 Juli 2023</span>
                   </div>
                   <div class="timeline-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores, laboriosam minima corporis labore provident ipsa?</p>
+                    <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores, laboriosam minima corporis labore provident ipsa?</p> -->
                   </div>
                 </div>
 
@@ -172,7 +172,7 @@
                   <span>06 Agustus 2023</span>
                   </div>
                   <div class="timeline-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores, laboriosam minima corporis labore provident ipsa?</p>
+                    <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores, laboriosam minima corporis labore provident ipsa?</p> -->
                   </div>
                 </div>
 
@@ -285,7 +285,7 @@
           <div class="col-md-6">
             <ul class="list-group">
               <li class="list-group-item">
-                <div class="d-block fw-bold">BSI</div>
+                <div class="d-block fw-bold">BSI (Bank Syariah Indonesia)</div>
                 7127922106 - IHSAN SYAUQI 'ADN
               </li>
               <li class="list-group-item">
@@ -374,6 +374,9 @@
     <script>
       const rootElement = document.querySelector(":root");
       const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
+      const audioIcon = document.querySelector('.audio-icon-wrapper i');
+      const song = document.querySelector('#song');
+      let isPlaying = false;
 
       function disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -396,10 +399,24 @@
       }
 
       function playAudio() {
-        const song = document.querySelector('#song');
         song.volume = 0.1;
         audioIconWrapper.style.display = 'flex';
         song.play();
+        isPlaying = true;
+      }
+
+      audioIconWrapper.onclick = function() {
+        if (isPlaying) {
+          song.pause();
+          audioIcon.classList.remove('bi-disc');
+          audioIcon.classList.add('bi-pause-circle');
+        } else {
+          song.play();
+          audioIcon.classList.add('bi-disc');
+          audioIcon.classList.remove('bi-pause-circle');
+        }
+
+        isPlaying = !isPlaying;
       }
 
       // if (!localStorage.getItem('opened')) {
@@ -426,6 +443,14 @@
   });
 });
 
+    </script>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get('n');
+
+      const namaContainer = document.querySelector('.hero h4 span');
+      namaContainer.innerText = nama;
     </script>
   </body>
 </html>
