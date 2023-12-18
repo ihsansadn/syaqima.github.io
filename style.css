@@ -459,23 +459,23 @@ footer li {
 }
 
 /* Mobile Phone */
-@media (max-width: 760px) {
+@media (max-width: 700px) {
     html { 
-        font-size: 60%;
+        font-size: 100%;
         .simply-countdown > .simply-section {
-            padding: 45px;
-            margin: 3px;
+            padding: 30px;
+            margin: 2px;
         }
     }
     
 
     .timeline li .timeline-image{
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
     }
 
     .timeline li .timeline-panel {
-        width: 65%;
+        width: 50%;
         transform: translateX(-20px);
     }
 
